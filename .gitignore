@@ -3,3 +3,18 @@
 ################################################################################
 
 /.vs/config/applicationhost.config
+/CRUDApp/bin/Debug/netcoreapp1.1
+/CRUDApp/node_modules
+/CRUDApp/obj
+/Database/obj/Debug
+/Database/bin/Debug
+/CRUDApp/wwwroot
+/CRUDApp/CRUDApp.csproj.user
+/Database/Database.sqlproj.user
+/CRUDApp/Scripts/*.js.map
+/CRUDApp/Scripts/*.js
+/CRUDApp/Scripts/App/Models/*.js.map
+/CRUDApp/Scripts/App/Models/*.js
+/CRUDApp/Scripts/App/*.js.map
+/CRUDApp/Scripts/App/*.js
+

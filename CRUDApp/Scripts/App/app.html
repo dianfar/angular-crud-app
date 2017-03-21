@@ -1,0 +1,61 @@
+﻿<section>
+    <h1>Product</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Product ID</td>
+                    <td>Name</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                    <td>Category</td>
+                    <td>Supplier</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{ product.productId }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.categoryName }}</td>
+                    <td>{{ product.supplierName }}</td>
+                    <td><a (click)="edit(product)">Edit</a>&nbsp;|&nbsp;<a (click)="delete()">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section>
+    <h2>Add Product</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>
+            <label>Name:</label>
+            <input type="text" formControlName="name">
+        </p>
+        <p>
+            <label>Quantity:</label>
+            <input type="text" formControlName="quantity">
+        </p>
+        <p>
+            <label>Price:</label>
+            <input type="text" formControlName="price">
+        </p>
+        <p>
+            <label>Category:</label>
+            <select formControlName="category">
+                <option *ngFor="let category of categories" value="{{ category.categoryId }}">{{ category.categoryName }}</option>
+            </select>
+        </p>
+        <p>
+            <label>Supplier:</label>
+            <select formControlName="supplier">
+                <option *ngFor="let supplier of suppliers" value="{{ supplier.supplierId }}">{{ supplier.name }}&nbsp;-&nbsp;{{ supplier.contactName }}</option>
+            </select>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!form.valid">Submit</button>
+        </p>
+    </form>
+</section>
