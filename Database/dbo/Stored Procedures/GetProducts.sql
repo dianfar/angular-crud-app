@@ -11,5 +11,5 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT P.ProductId, P.Name, P.Quantity, P.Price, S.Name AS SupplierName, C.CategoryName FROM dbo.Product P inner join dbo.Supplier S ON P.SupplierId = S.SupplierId inner join dbo.Category C ON C.CategoryId = P.CategoryId
+	SELECT P.ProductId, P.Name, P.Quantity, P.Price, S.SupplierId, S.Name AS SupplierName, C.CategoryId, C.CategoryName FROM dbo.Product P inner join dbo.Supplier S ON P.SupplierId = S.SupplierId inner join dbo.Category C ON C.CategoryId = P.CategoryId
 END

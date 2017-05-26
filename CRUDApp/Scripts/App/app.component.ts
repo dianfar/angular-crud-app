@@ -68,8 +68,11 @@ export class AppComponent {
         this.form.get('category').setValue(product.categoryId); 
     }
 
-    delete() {
-
+    delete(product: IProduct) {
+        this.appService.deleteProduct(product.productId).subscribe(response => {
+            this.getProducts();
+            this.form.reset();
+        });
     }
 
     private getProducts() {
