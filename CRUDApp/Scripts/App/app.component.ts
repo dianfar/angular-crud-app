@@ -15,6 +15,7 @@ export class AppComponent {
     categories: ICategory[] = [];
     suppliers: ISupplier[] = [];
 
+    isEditMode = false;
     form: FormGroup;
 
     constructor(private appService: AppService, private formBuilder: FormBuilder) {
@@ -46,14 +47,25 @@ export class AppComponent {
         product.price = this.form.controls['price'].value;
         product.supplierId = this.form.controls['supplier'].value;
         product.categoryId = this.form.controls['category'].value;
-        this.appService.addProduct(product).subscribe(response => {
-            this.getProducts();
-            this.form.reset();
-        });
+        if (this.isEditMode) {
+            this.appService.editProduct(product).subscribe(response => {
+                this.getProducts();
+                this.form.reset();
+            });
+        } else {
+            this.appService.addProduct(product).subscribe(response => {
+                this.getProducts();
+                this.form.reset();
+            });
+        }   
     }
 
     edit(product: IProduct) {
-        
+        this.form.get("name").setValue(product.name);
+        this.form.get("quantity").setValue(product.quantity); 
+        this.form.get('price').setValue(product.price); 
+        this.form.get('supplier').setValue(product.supplierId); 
+        this.form.get('category').setValue(product.categoryId); 
     }
 
     delete() {

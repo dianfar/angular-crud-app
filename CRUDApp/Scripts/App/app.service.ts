@@ -18,6 +18,14 @@ export class AppService {
         return this.http.post("api/product", product);
     }
 
+    editProduct(product: IProduct) {
+        return this.http.put("api/product", product);
+    }
+
+    deleteProduct(productId: number) {
+        return this.http.delete("api/product", productId);
+    }
+
     getCategories() {
         return this.http.get("api/category").map(data => <ICategory[]>data.json());
     }
