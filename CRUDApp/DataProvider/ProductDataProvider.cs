@@ -39,7 +39,7 @@
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
-                dynamicParameters.Add("@id", id);
+                dynamicParameters.Add("@productId", id);
                 await sqlConnection.ExecuteAsync(
                     "DeleteProduct",
                     dynamicParameters,

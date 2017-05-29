@@ -23,7 +23,7 @@ export class AppService {
     }
 
     deleteProduct(productId: number) {
-        return this.http.delete("api/product", productId);
+        return this.http.delete(`api/product/${productId}`);
     }
 
     getCategories() {
