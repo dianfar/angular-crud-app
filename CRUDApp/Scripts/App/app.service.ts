@@ -11,26 +11,26 @@ export class AppService {
     constructor(private http: Http) { }
 
     getProducts() {
-        return this.http.get("api/product").map(data => <IProduct[]>data.json());
+        return this.http.get("/api/product").map(data => <IProduct[]>data.json());
     }
 
     addProduct(product: IProduct) {
-        return this.http.post("api/product", product);
+        return this.http.post("/api/product", product);
     }
 
     editProduct(product: IProduct) {
-        return this.http.put("api/product", product);
+        return this.http.put("/api/product", product);
     }
 
     deleteProduct(productId: number) {
-        return this.http.delete(`api/product/${productId}`);
+        return this.http.delete(`/api/product/${productId}`);
     }
 
     getCategories() {
-        return this.http.get("api/category").map(data => <ICategory[]>data.json());
+        return this.http.get("/api/category").map(data => <ICategory[]>data.json());
     }
 
     getSuppliers() {
-        return this.http.get("api/supplier").map(data => <ISupplier[]>data.json());
+        return this.http.get("/api/supplier").map(data => <ISupplier[]>data.json());
     }
 }
