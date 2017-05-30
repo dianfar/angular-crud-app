@@ -69,10 +69,12 @@ export class AppComponent {
     }
 
     delete(product: IProduct) {
-        this.appService.deleteProduct(product.productId).subscribe(response => {
-            this.getProducts();
-            this.form.reset();
-        });
+        if (confirm("Are you sure want to delete this?")) {
+            this.appService.deleteProduct(product.productId).subscribe(response => {
+                this.getProducts();
+                this.form.reset();
+            });
+        }
     }
 
     private getProducts() {
