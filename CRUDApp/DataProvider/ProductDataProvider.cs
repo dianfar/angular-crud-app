@@ -79,12 +79,12 @@
             {
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
-                dynamicParameters.Add("@ProductId", product.ProductId);
-                dynamicParameters.Add("@Name", product.Name);
-                dynamicParameters.Add("@Price", product.Price);
-                dynamicParameters.Add("@Quantity", product.Quantity);
-                dynamicParameters.Add("@SupplierId", product.SupplierId);
-                dynamicParameters.Add("@CategoryId", product.CategoryId);
+                dynamicParameters.Add("@productId", product.ProductId);
+                dynamicParameters.Add("@name", product.Name);
+                dynamicParameters.Add("@price", product.Price);
+                dynamicParameters.Add("@quantity", product.Quantity);
+                dynamicParameters.Add("@supplierId", product.SupplierId);
+                dynamicParameters.Add("@categoryId", product.CategoryId);
                 await sqlConnection.ExecuteAsync(
                     "UpdateProduct",
                     dynamicParameters,

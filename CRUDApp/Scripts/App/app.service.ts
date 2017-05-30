@@ -19,7 +19,7 @@ export class AppService {
     }
 
     editProduct(product: IProduct) {
-        return this.http.put("/api/product", product);
+        return this.http.put(`/api/product/${product.productId}`, product);
     }
 
     deleteProduct(productId: number) {

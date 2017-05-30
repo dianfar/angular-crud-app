@@ -17,6 +17,7 @@ export class AppComponent {
 
     isEditMode = false;
     form: FormGroup;
+    product: IProduct = <IProduct>{};
 
     constructor(private appService: AppService, private formBuilder: FormBuilder) {
         this.form = formBuilder.group({
@@ -41,26 +42,36 @@ export class AppComponent {
     }
 
     onSubmit() {
-        var product: IProduct = <IProduct>{};
-        product.name = this.form.controls['name'].value;
-        product.quantity = this.form.controls['quantity'].value;
-        product.price = this.form.controls['price'].value;
-        product.supplierId = this.form.controls['supplier'].value;
-        product.categoryId = this.form.controls['category'].value;
+        this.product.name = this.form.controls['name'].value;
+        this.product.quantity = this.form.controls['quantity'].value;
+        this.product.price = this.form.controls['price'].value;
+        this.product.supplierId = this.form.controls['supplier'].value;
+        this.product.categoryId = this.form.controls['category'].value;
         if (this.isEditMode) {
-            this.appService.editProduct(product).subscribe(response => {
+            this.appService.editProduct(this.product).subscribe(response => {
                 this.getProducts();
                 this.form.reset();
             });
         } else {
-            this.appService.addProduct(product).subscribe(response => {
+            this.appService.addProduct(this.product).subscribe(response => {
                 this.getProducts();
                 this.form.reset();
             });
         }   
     }
 
+    cancel() {
+        this.isEditMode = true;
+        this.form.get("name").setValue('');
+        this.form.get("quantity").setValue('');
+        this.form.get('price').setValue('');
+        this.form.get('supplier').setValue(0);
+        this.form.get('category').setValue(0); 
+    }
+
     edit(product: IProduct) {
+        this.isEditMode = true;
+        this.product = product;
         this.form.get("name").setValue(product.name);
         this.form.get("quantity").setValue(product.quantity); 
         this.form.get('price').setValue(product.price); 
