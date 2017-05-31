@@ -22,8 +22,8 @@ export class AppComponent {
     constructor(private appService: AppService, private formBuilder: FormBuilder) {
         this.form = formBuilder.group({
             "name": ["", Validators.required],
-            "quantity": ["", Validators.required],
-            "price": ["", Validators.required],
+            "quantity": ["", [Validators.required, Validators.pattern("^[0-9]*$")]],
+            "price": ["", [Validators.required, Validators.pattern("^[0-9]*$")]],
             "category": ["", Validators.required],
             "supplier": ["", Validators.required]
         });
