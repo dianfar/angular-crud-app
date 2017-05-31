@@ -1,4 +1,5 @@
-﻿var gulp = require('gulp');
+﻿/// <binding BeforeBuild='webpack' />
+var gulp = require('gulp');
 var exec = require('child_process').exec;
 
 gulp.task("webpack", function (callback) {
