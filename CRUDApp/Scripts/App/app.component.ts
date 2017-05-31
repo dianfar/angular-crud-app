@@ -14,7 +14,7 @@ export class AppComponent {
     products: IProduct[] = [];
     categories: ICategory[] = [];
     suppliers: ISupplier[] = [];
-
+    formLabel: string;
     isEditMode = false;
     form: FormGroup;
     product: IProduct = <IProduct>{};
@@ -27,6 +27,8 @@ export class AppComponent {
             "category": ["", Validators.required],
             "supplier": ["", Validators.required]
         });
+
+        this.formLabel = "Add Product";
     }
 
     ngOnInit() {
@@ -61,7 +63,9 @@ export class AppComponent {
     }
 
     cancel() {
-        this.isEditMode = true;
+        this.formLabel = "Add Product";
+        this.isEditMode = false;
+        this.product = <IProduct>{};
         this.form.get("name").setValue('');
         this.form.get("quantity").setValue('');
         this.form.get('price').setValue('');
@@ -70,6 +74,7 @@ export class AppComponent {
     }
 
     edit(product: IProduct) {
+        this.formLabel = "Edit Product";
         this.isEditMode = true;
         this.product = product;
         this.form.get("name").setValue(product.name);
