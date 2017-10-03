@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/config/applicationhost.config
+/.vs/
 /CRUDApp/bin/Debug/netcoreapp1.1
 /CRUDApp/node_modules
 /CRUDApp/obj
